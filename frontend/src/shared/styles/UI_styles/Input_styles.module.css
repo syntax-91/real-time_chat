@@ -1,0 +1,16 @@
+.input_style_default {
+	border: 1px solid #1d1d1d;
+	padding: 10px 25px;
+	border-radius: 20px;
+	outline: 0;
+}
+
+.input_style_default:hover,
+.input_style_default:focus {
+	background-color: #040404;
+}
+
+.w_full,
+.w-full {
+	width: 100%;
+}
