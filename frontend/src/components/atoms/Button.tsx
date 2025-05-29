@@ -1,6 +1,6 @@
-import { LR_anim } from './animations/lr'
-import s from './styles/buttonStyles.module.css'
-import { BtnProps } from './types/types'
+import s from './../../shared/styles/modalStyless.module.css'
+import { BtnProps } from './../../shared/types/types'
+import { LR_anim } from './../UI/animations/lr'
 
 export function Button({
 	label = 'text',

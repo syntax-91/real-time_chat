@@ -1,0 +1,23 @@
+.default {
+	border-radius: var(--globalDefaultRounded);
+	padding: var(--globalPaddingY) var(--globalPaddingX);
+	font-size: var(--globalDefaultFontSize);
+	margin-top: 0;
+
+	border: 1px solid #444;
+	outline: 0;
+}
+
+.full {
+	width: 100%;
+}
+
+.dark {
+	color: var(--globalMainBgColor_dark);
+	background-color: var(--globalMainBgColor_dark);
+}
+
+.light {
+	color: var(--globalMainBgColor_light);
+	background-color: var(--globalMainBgColor_light);
+}

@@ -1,10 +1,14 @@
 import { useForm } from 'react-hook-form'
-import { loginFetch } from '../../api/authAPI'
+import { useNavigate } from 'react-router-dom'
+import { LoginFetch } from '../../api/authAPI'
 import { passwordSchema, usernameSchema } from '../../shared/schema/schema'
 import type { TUser } from '../../shared/types/types'
 import { Button } from '../atoms/Button'
 
 export function LoginContainer() {
+
+	const nav = useNavigate();
+	
 	const {
 		register,
 		handleSubmit,
@@ -12,8 +16,12 @@ export function LoginContainer() {
 	} = useForm({ mode: 'onChange' })
 
 	const submit = (data: TUser) => {
-		loginFetch(data)
-		console.log('submit...')
+		LoginFetch(data)
+		.then(e => { 
+			if(e === true){ 
+				nav('/')
+			 } 
+		})
 	}
 
 	return (

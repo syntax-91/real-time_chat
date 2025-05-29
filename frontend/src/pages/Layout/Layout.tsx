@@ -1,21 +1,20 @@
+import { observer } from 'mobx-react-lite'
 import { Outlet } from 'react-router-dom'
 import { modalStore } from '../../app/store'
-import { Modal } from '../../components/syntax.UIkit/modal'
+import { Modal } from '../../components/molecules/modal'
 
-export default function Layout() {
+ function Layout() {
+
+
 	return (
 		<div className='w-[100vw] h-[100vh]'>
 			{modalStore.isOpen && (
 				<div
-					className='w-[100%] h-[100%] bg-red-900
+					className='w-[100%] h-[100%]
 				fixed z-100'
 				>
 					<Modal
-						title={modalStore.title}
 						msg={modalStore.msg}
-						autoClose={true}
-						autoCloseDuration={3000}
-						setIsOpen={modalStore.setIsOpen}
 					/>
 				</div>
 			)}
@@ -24,3 +23,5 @@ export default function Layout() {
 		</div>
 	)
 }
+
+export default observer(Layout)

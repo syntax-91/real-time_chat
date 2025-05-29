@@ -2,16 +2,27 @@ import cors from 'cors'
 import { config } from 'dotenv'
 import express from 'express'
 import { AuthRouter } from './routes/auth.route.js'
+import { ChatsRouter } from './routes/chats.route.js'
+import { createAccessRouter } from './routes/createACCESS.route.js'
 import { connectDB } from './service/connectDB.service.js'
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+	origin: 'http://localhost:5173',
+	credentials: true
+}))
 const PORT = 3000
 config()
 
 //auth
 app.use('/auth', AuthRouter)
+
+//chats
+app.use('/chats', ChatsRouter)
+
+//createACCESS
+app.use('/createACCESS', createAccessRouter)
 
 //404
 app.use((req, res) => {
