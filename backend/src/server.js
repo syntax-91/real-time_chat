@@ -1,13 +1,16 @@
 import cors from 'cors'
 import { config } from 'dotenv'
 import express from 'express'
+import { createServer } from 'http'
+import { Server } from 'socket.io'
 import { AuthRouter } from './routes/auth.route.js'
 import { ChatsRouter } from './routes/chats.route.js'
 import { createAccessRouter } from './routes/createACCESS.route.js'
-import { msgsRouter } from './routes/msgs.route.js'
+
 import { SendMsgRouter } from './routes/sendMsg.route.js'
 import { connectDB } from './service/connectDB.service.js'
-
+import { setupSocket } from './service/socket.service.js'
+ 
 const app = express()
 app.use(express.json())
 app.use(cors({
@@ -16,15 +19,18 @@ app.use(cors({
 }))
 const PORT = 3000
 config()
- 
+
+// socket.io
+const server = createServer(app)
+const io = new Server(server)
+
 //auth
 app.use('/auth', AuthRouter)
 
 //chats
 app.use('/chats', ChatsRouter)
  
-// getMsgs
-app.use('/getMsgs', msgsRouter)
+// getMsgs//
 
 // /sendMsg
 app.use('/sendMsg', SendMsgRouter)
@@ -39,6 +45,8 @@ app.use((req, res) => {
 
 const run = async () => {
 	await connectDB()
+
+	setupSocket(io)
 
 	await app.listen(PORT, (req, res) => {
 		console.log(`Server running as http://localhost:${PORT}`)

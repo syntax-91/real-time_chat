@@ -1,8 +1,4 @@
 import { observer } from 'mobx-react-lite'
-import { useMediaQuery } from 'react-responsive'
-import { msgsAPI } from '../../api/data'
-import { currentChatDataStore } from '../../app/store/CurrentChat/currentChatData'
-import { CurrentChatMobileStore } from '../../app/store/CurrentChat/isOpenCurrentChatMobile'
 import type { IChatProps } from '../../shared/types/types'
 
  function Chat(
@@ -11,21 +7,10 @@ import type { IChatProps } from '../../shared/types/types'
 
 	const stylesChat = 'border px-3 py-3 my-2 rounded-2xl border-[#444] || fn hover:bg-[#403f3f] cursor-pointer bg-[#2b2a2a] flex gap-2 active:bg-white/20'
 
-	const isMobile = useMediaQuery({maxWidth: 700})
 
 	const handleClick = async() => {
-		
-		currentChatDataStore.open({
-			ava: ava,
-			displayName: displayName,
-			roomID: rest.roomID
-		})  
- 
-		 msgsAPI()
 	
-		if(isMobile){
-			CurrentChatMobileStore.openCurrentChatMobile()
-		}
+ 
 	}
 
 	return (

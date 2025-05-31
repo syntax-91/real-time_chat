@@ -53,7 +53,7 @@ export interface IChatProps {
 	latestMsg?: string,
 }
 
-// state
+// state 
 
 export type TStateUser = 'offline'|'online'
 

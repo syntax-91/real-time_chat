@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { msgModel } from '../models/msgModel.js'
+import { RoomModel } from '../models/RoomModel.js'
 
 export const SendMsgRouter = Router()
 
@@ -12,7 +12,7 @@ SendMsgRouter.post('/', async (req, res) => {
 	}
 
 	try {
-		const newMsg = await msgModel.findOne({
+		const newMsg = await RoomModel.findOne({
 			roomID: data.roomID
 		})
 

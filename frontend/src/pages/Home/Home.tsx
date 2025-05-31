@@ -2,11 +2,11 @@ import { observer } from 'mobx-react-lite'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { routesConfig } from '../../app/config/routesConfig'
-import { CurrentChatMobileStore } from '../../app/store/CurrentChat/isOpenCurrentChatMobile'
+import { selectedCurrentChatStore } from '../../app/store/CurrentChat/selectedCurrentChat'
 import { isOpenMenuDesktop } from '../../app/store/isOpenMenu/isOpenMenuDesktop'
 import { isOpenMenuMobile } from '../../app/store/isOpenMenu/isOpenMenuMobile'
 import Block1 from '../../components/organisms/Block1'
-import { CurrentChatMobile } from '../../components/organisms/currentChat/currentChatMobile'
+import { CurrentChat } from '../../components/organisms/currentChat/currentChat'
 import MenuDesktop from '../../components/organisms/menu/menuDesktop'
 import MenuMobile from '../../components/organisms/menu/menuMobile'
 
@@ -38,9 +38,13 @@ import MenuMobile from '../../components/organisms/menu/menuMobile'
 				{/* Block2 - currentChat */}
 
 				<div>	
-					{CurrentChatMobileStore.isOpenCurrentChatMobile && 
-					<CurrentChatMobile />}
+					{selectedCurrentChatStore.selectedCurrentChat &&
+					<CurrentChat />}
 
+					{!selectedCurrentChatStore.selectedCurrentChat &&
+					<div>
+						выберите чат
+					</div>}
 					
 				</div>
 
