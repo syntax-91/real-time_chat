@@ -1,9 +1,11 @@
+import { observer } from 'mobx-react-lite'
 import { useMediaQuery } from 'react-responsive'
+import { msgsAPI } from '../../api/data'
 import { currentChatDataStore } from '../../app/store/CurrentChat/currentChatData'
 import { CurrentChatMobileStore } from '../../app/store/CurrentChat/isOpenCurrentChatMobile'
 import type { IChatProps } from '../../shared/types/types'
 
-export function Chat(
+ function Chat(
 	{ ava, displayName, latestMsg, ...rest }:IChatProps
 ){
 
@@ -11,13 +13,16 @@ export function Chat(
 
 	const isMobile = useMediaQuery({maxWidth: 700})
 
-	const handleClick = () => {
+	const handleClick = async() => {
 		
 		currentChatDataStore.open({
 			ava: ava,
-			displayName: displayName
-		})
-
+			displayName: displayName,
+			roomID: rest.roomID
+		})  
+ 
+		 msgsAPI()
+	
 		if(isMobile){
 			CurrentChatMobileStore.openCurrentChatMobile()
 		}
@@ -41,3 +46,5 @@ export function Chat(
 		</div>
 	)
 }
+
+export default observer(Chat)

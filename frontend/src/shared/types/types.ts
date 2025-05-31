@@ -46,6 +46,8 @@ export interface InputProps {
 export interface IChatProps {
 	ava: string,
 	displayName: string,
+	roomID: string
+
 	state?: TStateUser,
 	profileType?: TProfile,
 	latestMsg?: string,
@@ -58,3 +60,10 @@ export type TStateUser = 'offline'|'online'
 // profileType
 export type TProfile = 'private'|'public'
 
+// msgs
+export interface IMsgsProps {
+	msgID: string,
+	text: string,
+	ava: string,
+	who: string
+}

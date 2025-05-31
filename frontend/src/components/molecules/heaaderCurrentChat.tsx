@@ -9,7 +9,7 @@ export function HeaderCurrentChat(){
 	}
 
 	return (
-		<div className='w-[100%] h-[50px] fixed top-0 bg-white/8
+		<div className='w-[100%] h-[50px] _fixed top-0 bg-white/8
 		flex items-center px-[10px]'>
 				
 				<div

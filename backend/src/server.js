@@ -4,6 +4,8 @@ import express from 'express'
 import { AuthRouter } from './routes/auth.route.js'
 import { ChatsRouter } from './routes/chats.route.js'
 import { createAccessRouter } from './routes/createACCESS.route.js'
+import { msgsRouter } from './routes/msgs.route.js'
+import { SendMsgRouter } from './routes/sendMsg.route.js'
 import { connectDB } from './service/connectDB.service.js'
 
 const app = express()
@@ -14,13 +16,19 @@ app.use(cors({
 }))
 const PORT = 3000
 config()
-
+ 
 //auth
 app.use('/auth', AuthRouter)
 
 //chats
 app.use('/chats', ChatsRouter)
+ 
+// getMsgs
+app.use('/getMsgs', msgsRouter)
 
+// /sendMsg
+app.use('/sendMsg', SendMsgRouter)
+ 
 //createACCESS
 app.use('/createACCESS', createAccessRouter)
 

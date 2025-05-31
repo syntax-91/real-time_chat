@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 import { ChatsAPI } from '../../api/data'
 import { ChatsStore } from '../../app/store/chats'
 import type { IChatsProps } from '../../shared/types/types'
-import { Chat } from './chat'
+import Chat from '../molecules/chat'
 
  function Chats(){
 
@@ -19,8 +19,6 @@ import { Chat } from './chat'
 			chatsArr = Object.values(ChatsStore.chats[0])
 	}
 
-	
-
 	return (
 		<div>
 			 
@@ -33,6 +31,7 @@ import { Chat } from './chat'
 						 state={chat.state}
 						 profileType={chat.profileType}
 						 latestMsg={chat.latestMsg}
+						 roomID={chat.roomID}
 						 />
 					</div>
 			)) }
